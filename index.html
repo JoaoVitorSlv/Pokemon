@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
+    <title>Pokedex</title>
+    <script defer src="script.js"></script>
+    <style>
+        .pokemon-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; 
+            justify-content: center; 
+        }
+
+        .pokemon-card {
+            display: inline-block;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 120px;
+        }
+
+        .pokemon-card img {
+            width: 100%;  
+            height: auto;
+            margin-bottom: 5px;  
+        }
+
+        .pokemon-card p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .pokemon-card:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Pokedex</h1>
+    <div id="pokemon-list" class="pokemon-container"></div> 
 </body>
 </html>
