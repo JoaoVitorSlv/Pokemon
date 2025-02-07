@@ -16,12 +16,11 @@ async function getPokemons() {
 }
 
 async function fotos() {
-    // Loop de 1 a 151
     for (let i = 1; i <= 151; i++) {
         const consulta = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         const result = await consulta.json();
         
-        const foto = result.sprites.front_default; // Foto do Pokémon (frontal)
+        const foto = result.sprites.front_default;
         
         const pokemonCard = document.createElement('div');
         pokemonCard.classList.add('pokemon-card');
