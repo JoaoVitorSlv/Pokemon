@@ -16,7 +16,9 @@ async function getPokemons() {
 }
 
 async function fotos() {
-    for (let i = 1; i <= 150; i++) {
+    const startTime = Date.now();
+
+    for (let i = 1; i <= 36; i++) {
         const consulta = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         const result = await consulta.json();
         
@@ -42,8 +44,13 @@ async function fotos() {
         document.getElementById('pokemon-list').appendChild(pokemonCard);
     }
 
-    document.querySelector(".loading-screen").style.display = "none";
-    document.querySelector(".main").style.display = "block";
+    const elapsedTime = Date.now() - startTime;
+    const remainingTime = Math.max(0, 5000 - elapsedTime);
+
+    setTimeout(() => {
+        document.querySelector(".loading-screen").style.display = "none";
+        document.querySelector(".main").style.display = "block";
+    }, remainingTime);
 }
 
 fotos();
