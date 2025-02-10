@@ -3,10 +3,15 @@
     margin: 20px;             
     display: none; 
 }
+.main a{
+    text-decoration:none;
+    color: black;
+}
 
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 80px;
     gap: 10px; 
     justify-content: center; 
 }
@@ -35,7 +40,6 @@
 .pokemon-card:hover {
     background-color: #ddd;
 }
-
 
 .loading-screen {
     position: fixed;
@@ -84,6 +88,7 @@
     align-items: center;
     position: relative;
 }
+
 .botao::before {
     content: "";
     width: 15px;
@@ -92,7 +97,88 @@
     border-radius: 50%;
     position: absolute;
 }
+
 @keyframes girar {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:rgb(255, 21, 0);
+    padding: 6px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        padding: 0;
+        padding-bottom: 12px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.3s;
+    }
 }

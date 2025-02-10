@@ -17,31 +17,37 @@ async function getPokemons() {
 
 async function fotos() {
     const startTime = Date.now();
+    const lista = document.getElementById('pokemon-list');
 
-    for (let i = 1; i <= 36; i++) {
+    for (let i = 1; i <= 48; i++) {
         const consulta = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
         const result = await consulta.json();
-        
+
         const foto = result.sprites.front_default;
-        
+
         const pokemonCard = document.createElement('div');
         pokemonCard.classList.add('pokemon-card');
 
         const img = document.createElement('img');
         img.src = foto;
-        img.alt = `Pokemon ${i}`;
+        img.alt = result.name;
 
         await new Promise((resolve) => {
             img.onload = resolve;
         });
 
-        pokemonCard.appendChild(img);
+        const link = document.createElement('a');
+        link.href = `pokemon.html?name=${result.name}`; // Link correto
+        link.classList.add('pokemon-link');
 
         const name = document.createElement('p');
         name.textContent = result.name;
-        pokemonCard.appendChild(name);
 
-        document.getElementById('pokemon-list').appendChild(pokemonCard);
+        link.appendChild(img);
+        link.appendChild(name);
+        pokemonCard.appendChild(link);
+
+        lista.appendChild(pokemonCard);
     }
 
     const elapsedTime = Date.now() - startTime;
@@ -54,3 +60,14 @@ async function fotos() {
 }
 
 fotos();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+});
+
